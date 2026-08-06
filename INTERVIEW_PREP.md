@@ -263,6 +263,9 @@ report device from the application.
 
 ### Existing real-model local index
 
+If a Docker demo is already running, execute `docker compose down` first so ports 8020 and 8504
+are available. Then use two PowerShell windows.
+
 PowerShell window 1:
 
 ```powershell
@@ -407,4 +410,3 @@ Be able to draw ingestion and search flows, explain cosine/normalization, distin
 and object signals, describe AND/OR and min/max behavior, state benchmark boundaries, explain
 why Flat is appropriate now, name the SQLite/FAISS atomicity gap, describe real GPU proof, and
 run one query yourself. That is enough to discuss the project honestly at interview depth.
-

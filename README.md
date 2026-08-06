@@ -50,6 +50,8 @@ without pretending mock results are model quality.
 ## Run the existing local real-model index
 
 The user-supplied data has already been indexed locally. Start two PowerShell windows.
+If the lightweight Docker demo is already using ports 8020/8504, stop it first with
+`docker compose down`.
 
 Window 1:
 
@@ -161,4 +163,3 @@ interview answers, and restart instructions.
 ## License
 
 [MIT](LICENSE)
-
