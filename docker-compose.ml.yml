@@ -1,0 +1,15 @@
+services:
+  api:
+    build:
+      dockerfile: Dockerfile.ml
+    environment:
+      VISUAL_SEARCH_DATA_DIR: /app/runtime/ml/images
+      VISUAL_SEARCH_DATABASE_PATH: /app/runtime/ml/metadata.db
+      VISUAL_SEARCH_INDEX_PATH: /app/runtime/ml/vectors.index
+      VISUAL_SEARCH_INDEX_MAP_PATH: /app/runtime/ml/vectors.json
+      VISUAL_SEARCH_DETECTOR_BACKEND: yolo
+      VISUAL_SEARCH_ENCODER_BACKEND: openclip
+      VISUAL_SEARCH_DEVICE: cpu
+  frontend:
+    build:
+      dockerfile: Dockerfile.ml

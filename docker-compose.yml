@@ -1,0 +1,42 @@
+name: hybrid-visual-search
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      VISUAL_SEARCH_DATA_DIR: /app/runtime/hash-demo/images
+      VISUAL_SEARCH_DATABASE_PATH: /app/runtime/hash-demo/metadata.db
+      VISUAL_SEARCH_INDEX_PATH: /app/runtime/hash-demo/vectors.index
+      VISUAL_SEARCH_INDEX_MAP_PATH: /app/runtime/hash-demo/vectors.json
+      VISUAL_SEARCH_DETECTOR_BACKEND: hash
+      VISUAL_SEARCH_ENCODER_BACKEND: hash
+      VISUAL_SEARCH_EMBEDDING_DIMENSION: 64
+    volumes:
+      - ./runtime:/app/runtime
+    ports:
+      - "8020:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["streamlit", "run", "frontend/app.py", "--server.address", "0.0.0.0", "--server.port", "8501"]
+    environment:
+      VISUAL_SEARCH_API_URL: http://api:8000
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "8504:8501"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8501/_stcore/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 20

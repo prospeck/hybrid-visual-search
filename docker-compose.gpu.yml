@@ -1,0 +1,12 @@
+services:
+  api:
+    environment:
+      VISUAL_SEARCH_DEVICE: cuda
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
