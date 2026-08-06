@@ -32,7 +32,7 @@ ml = [
 frontend = ["streamlit>=1.46,<2", "pandas>=2.3,<3"]
 dev = [
   "mypy>=1.16,<2",
-  "pytest>=8.4,<9",
+  "pytest>=8.4,<10",
   "pytest-asyncio>=1,<2",
   "pytest-cov>=6,<8",
   "ruff>=0.12,<1",
