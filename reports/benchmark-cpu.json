@@ -1,0 +1,17 @@
+{
+  "created_at": "2026-08-06T18:38:57.098392Z",
+  "corpus": "30-image bounded sample imported from supplied COCO val2017 ZIP",
+  "device": "cpu",
+  "host_gpu_present_but_not_used": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+  "detector_model": "yolo11n.pt",
+  "embedding_model": "ViT-B-32/laion2b_s34b_b79k",
+  "vector_backend": "faiss.IndexFlatIP",
+  "indexing_images_per_second": 6.239,
+  "indexing_ms_per_image": 160.279,
+  "search_samples": 20,
+  "search_p50_ms": 56.676,
+  "search_p95_ms": 70.754,
+  "search_mean_ms": 56.708,
+  "measurement_boundary": "Warm model; search includes text encoding, FAISS retrieval, SQLite metadata reads, object filtering, and fusion."
+}
+
